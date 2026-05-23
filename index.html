@@ -1018,7 +1018,7 @@ footer a:hover { color: white; }
     <img src="images/hero.webp" alt="Kit Joguinhos das Sílabas" fetchpriority="high" decoding="async" width="560" height="420" style="max-width:100%; width:560px; height:auto; display:block; margin:0 auto 28px; border-radius:16px;">
 
     <p class="hero-sub">
-      Questões selecionadas para o cargo de Técnico do Seguro Social, com gabarito completo e comentadas pra chegar mais preparado para conquistar sua vaga!
+      Questões selecionadas para o cargo de Técnico do Seguro Social, com gabarito completo e comentadas pra chegar mais preparado e conquistar sua vaga!
     </p>
 
     <div style="text-align:center; margin-bottom:28px;">
@@ -1037,38 +1037,71 @@ footer a:hover { color: white; }
   </div>
 </section>
 
-<!-- ════ BLOCO 3B - EM POUCOS DIAS ════ -->
-<section style="background:var(--pessego); padding:68px 20px; border-top:4px solid var(--acento);">
+<!-- ════ BLOCO BEFORE/AFTER ════ -->
+<section style="background:#f8f8f8; padding:68px 20px; border-top:4px solid var(--acento);">
   <div class="container">
-    <h2 class="sec-title display" style="font-size:clamp(28px,5vw,44px);">Se você quer ver seu filho ou seus alunos...</h2>
-    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:16px; max-width:720px; margin:0 auto;">
+    <h2 class="sec-title display" style="font-size:clamp(26px,5vw,42px);">VEJA UM EXEMPLO</h2>
+    <div class="divider-pill"></div>
 
-      <div style="background:white; border-radius:20px; padding:28px 24px; display:flex; flex-direction:column; gap:14px; box-shadow:0 4px 20px rgba(0,0,0,0.06); border-bottom:4px solid var(--destaque);">
-        <div style="width:52px;height:52px;background:#EDE9FE;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;">💪</div>
-        <p style="font-size:15px; font-weight:700; color:var(--texto); line-height:1.4;">Sentindo mais confiança ao tentar ler e formar palavras novas</p>
+    <div id="baSlider" style="position:relative; max-width:680px; margin:0 auto; border-radius:20px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.18); cursor:col-resize; user-select:none; touch-action:none;">
+
+      <!-- Imagem DEPOIS (fundo, visível inteira) -->
+      <img id="baAfter" src="images/slide-2.webp" alt="Depois" style="display:block; width:100%; height:auto; pointer-events:none;">
+
+      <!-- Imagem ANTES (recortada à esquerda) -->
+      <div id="baBeforeWrap" style="position:absolute; top:0; left:0; width:50%; height:100%; overflow:hidden;">
+        <img id="baBefore" src="images/slide-1.webp" alt="Antes" style="display:block; width:100%; height:100%; object-fit:cover; object-position:left top; pointer-events:none;">
       </div>
 
-      <div style="background:white; border-radius:20px; padding:28px 24px; display:flex; flex-direction:column; gap:14px; box-shadow:0 4px 20px rgba(0,0,0,0.06); border-bottom:4px solid var(--cta);">
-        <div style="width:52px;height:52px;background:#D1FAE5;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;">🧠</div>
-        <p style="font-size:15px; font-weight:700; color:var(--texto); line-height:1.4;">Desenvolvendo consciência fonológica</p>
+      <!-- Linha divisória -->
+      <div id="baLine" style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:3px; height:100%; background:white; box-shadow:0 0 8px rgba(0,0,0,0.4); pointer-events:none;"></div>
+
+      <!-- Handle (alça) -->
+      <div id="baHandle" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:44px; height:44px; background:white; border-radius:50%; box-shadow:0 2px 12px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; pointer-events:none; z-index:10;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 5L2 10L7 15" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13 5L18 10L13 15" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
 
-      <div style="background:white; border-radius:20px; padding:28px 24px; display:flex; flex-direction:column; gap:14px; box-shadow:0 4px 20px rgba(0,0,0,0.06); border-bottom:4px solid var(--primaria);">
-        <div style="width:52px;height:52px;background:#DBEAFE;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;">🎵</div>
-        <p style="font-size:15px; font-weight:700; color:var(--texto); line-height:1.4;">Reconhecendo sílabas e sons com mais facilidade</p>
-      </div>
-
-      <div style="background:var(--acento); border-radius:20px; padding:28px 24px; display:flex; flex-direction:column; gap:14px; box-shadow:0 4px 20px rgba(255,217,61,0.3);">
-        <div style="width:52px;height:52px;background:rgba(0,0,0,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;">😄</div>
-        <p style="font-size:15px; font-weight:800; color:#3a2800; line-height:1.4;">E o melhor: Se divertindo enquanto aprende!</p>
-      </div>
+      <!-- Labels -->
+      <div style="position:absolute; top:14px; left:14px; background:rgba(0,0,0,0.55); color:white; font-size:12px; font-weight:800; padding:4px 12px; border-radius:100px; letter-spacing:0.06em; pointer-events:none;">QUESTÃO</div>
+      <div style="position:absolute; top:14px; right:14px; background:var(--cta); color:white; font-size:12px; font-weight:800; padding:4px 12px; border-radius:100px; letter-spacing:0.06em; pointer-events:none;">GABARITO</div>
 
     </div>
 
-    <p style="text-align:center; font-size:clamp(16px,2.5vw,20px); font-weight:800; color:var(--texto); margin-top:36px; letter-spacing:0.04em;">ESSE MATERIAL FOI PENSADO PRA VOCÊS!</p>
+    <p style="text-align:center; font-size:13px; font-weight:600; color:var(--cinza); margin-top:16px;">← Arraste para ver a questão e o gabarito →</p>
 
   </div>
 </section>
+
+<script>
+(function() {
+  const slider = document.getElementById('baSlider');
+  const beforeWrap = document.getElementById('baBeforeWrap');
+  const line = document.getElementById('baLine');
+  const handle = document.getElementById('baHandle');
+  let dragging = false;
+
+  function setPos(x) {
+    const rect = slider.getBoundingClientRect();
+    let pct = (x - rect.left) / rect.width;
+    pct = Math.max(0.02, Math.min(0.98, pct));
+    const pctStr = (pct * 100) + '%';
+    beforeWrap.style.width = pctStr;
+    line.style.left = pctStr;
+    handle.style.left = pctStr;
+  }
+
+  slider.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
+  window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+  window.addEventListener('mouseup', () => { dragging = false; });
+
+  slider.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', () => { dragging = false; });
+})();
+</script>
 
 <!-- ════ BLOCO 2 - MATERIAIS ════ -->
 <section class="materiais">
