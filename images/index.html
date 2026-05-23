@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit Alfabetização Divertida</title>
+
+<!-- Preconnect para fontes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Fonte sem bloquear renderização -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"></noscript>
+
+<!-- Meta SEO -->
+<meta name="description" content="Kit de joguinhos educativos para ensinar sílabas e ajudar crianças a ler e formar palavras 5x mais rápido, brincando!">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Joguinhos das Sílabas - Sabidinhos Kids">
+<meta property="og:description" content="Kit de joguinhos educativos para ensinar sílabas e ajudar crianças a ler e formar palavras 5x mais rápido, brincando!">
+<meta property="og:type" content="website">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Anti-CLS: reserva espaço para imagens */
+img { display: block; max-width: 100%; height: auto; }
+
+/* Font fallback enquanto Poppins carrega */
+body { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+
+:root {
+  --azul:       #EFF8FF;
+  --pessego:    #F3F4F6;
+  --primaria:   #60BFFF;
+  --cta:        #2A9D5C;
+  --cta-dark:   #1f7a47;
+  --destaque:   #7C3AED;
+  --acento:     #FFD93D;
+  --verde-c:    #A7E8BD;
+  --texto:      #2D2D2D;
+  --escuro:     #1B2A4A;
+  --roxo-esc:   #2D1B6E;
+  --branco:     #FFFFFF;
+  --cinza:      #6B7280;
+  --borda:      #E5E7EB;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--texto);
+  background: var(--branco);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ─── URGENCY BAR ─── */
+.urgency-bar {
+  background: var(--destaque);
+  color: white;
+  text-align: center;
+  padding: 11px 20px;
+  font-size: 14px;
+  font-weight: 800;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  letter-spacing: 0.02em;
+}
+.urgency-bar span { color: var(--acento); }
+.urgency-bar .cd {
+  display: inline-block;
+  background: rgba(0,0,0,0.25);
+  border-radius: 6px;
+  padding: 2px 10px;
+  margin-left: 6px;
+  font-family: monospace;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+}
+
+/* ─── LAYOUT ─── */
+section { width: 100%; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+/* ─── TIPOGRAFIA DISPLAY ─── */
+.display { font-family: 'Poppins', sans-serif; }
+
+/* ─── BADGE ─── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--acento);
+  color: #5B4000;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 16px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+}
+
+/* ─── SECTION TITLES ─── */
+.sec-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 4.5vw, 36px);
+  color: var(--texto);
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 32px;
+}
+.sec-title em { color: var(--destaque); font-style: normal; }
+.sec-title .hl-azul { color: var(--primaria); }
+.sec-sub {
+  text-align: center;
+  color: var(--cinza);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+.divider-pill {
+  width: 56px; height: 5px;
+  background: var(--destaque);
+  border-radius: 100px;
+  margin: 10px auto 36px;
+}
+
+/* ─── CTA BUTTON ─── */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--cta);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  padding: 16px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(42,157,92,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: bounce-btn 2.2s ease-in-out infinite;
+  will-change: transform;
+  white-space: nowrap;
+}
+.btn-cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 32px rgba(42,157,92,0.4); animation: none; }
+@keyframes bounce-btn {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.btn-sub-row {
+  display: flex; justify-content: center;
+  gap: 20px; flex-wrap: wrap;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--cinza);
+  font-weight: 700;
+}
+.btn-sub-row span { display: flex; align-items: center; gap: 5px; }
+
+/* ─── CHECK ITEM ─── */
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--texto);
+  line-height: 1.45;
+}
+.check-icon {
+  width: 26px; height: 26px;
+  background: var(--cta);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 13px;
+  color: white;
+}
+
+/* ════════════════════════════════════
+   BLOCO 1 - HERO
+════════════════════════════════════ */
+.hero {
+  background: #000000;
+  padding: 64px 20px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero > * { position: relative; z-index: 1; }
+
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 4.8vw, 44px);
+  color: white;
+  line-height: 1.15;
+  max-width: 700px;
+  margin: 0 auto 18px;
+  text-transform: uppercase;
+}
+.hero h1 em { color: var(--acento); font-style: normal; }
+.hero h1 strong { color: var(--cta); }
+
+.hero-sub {
+  font-size: clamp(15px, 2.5vw, 18px);
+  color: white !important;
+  font-weight: 400;
+  max-width: 560px;
+  margin: 0 auto 28px;
+  line-height: 1.55;
+}
+
+/* Mockup placeholder */
+.mockup-box {
+  background: white;
+  border-radius: 24px;
+  max-width: 460px;
+  margin: 0 auto 32px;
+  padding: 32px 24px;
+  border: 2.5px dashed var(--primaria);
+  box-shadow: 0 12px 40px rgba(96,191,255,0.2);
+}
+.mockup-box .m-icon { font-size: 56px; margin-bottom: 8px; }
+.mockup-box p { font-size: 13px; font-weight: 700; color: var(--cinza); }
+
+/* Price */
+.hero-price {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 2px;
+  margin-bottom: 28px;
+}
+.price-old { font-size: 18px; color: var(--cinza); text-decoration: line-through; font-weight: 700; }
+.price-tag { font-size: 12px; font-weight: 800; color: var(--destaque); text-transform: uppercase; letter-spacing: 0.1em; }
+.price-new {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 62px;
+  color: var(--cta);
+  line-height: 1;
+}
+.price-new sup { font-size: 28px; vertical-align: top; margin-top: 10px; }
+
+/* Hero cards */
+.hero-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 720px;
+  margin: 32px auto 0;
+}
+@media (max-width: 640px) {
+  .hero-cards { grid-template-columns: 1fr; }
+}
+.hero-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  text-align: left;
+  border: 1.5px solid rgba(255,255,255,0.15);
+}
+.hero-card .hc-icon {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--cta);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--cta);
+  font-size: 12px;
+  font-weight: 900;
+}
+.hero-card p { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.85); line-height: 1.45; }
+
+/* ════════════════════════════════════
+   BLOCO 2 - MATERIAIS
+════════════════════════════════════ */
+.materiais {
+  background: var(--escuro);
+  padding: 68px 20px;
+}
+.mat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  max-width: 780px;
+  margin: 0 auto 40px;
+}
+@media (max-width: 640px) {
+  .mat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.mat-card {
+  background: var(--azul);
+  border-radius: 18px;
+  padding: 28px 16px 20px;
+  text-align: center;
+  border: 1.5px solid rgba(96,191,255,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.mat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(96,191,255,0.2); }
+.mat-card .mc-icon {
+  width: 52px; height: 52px;
+  margin: 0 auto 14px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primaria);
+}
+.mat-card .mc-icon svg { width: 100%; height: 100%; stroke: var(--primaria); }
+.mat-card h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--texto);
+  line-height: 1.35;
+}
+
+/* Carousel */
+.carousel-wrap {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 28px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.carousel-track { display: flex; transition: transform 0.4s ease; }
+.carousel-slide { min-width: 100%; }
+.carousel-slide-inner { display: grid; gap: 0; padding: 0 4px; }
+.car-img-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--azul);
+  aspect-ratio: 3/4;
+  display: flex; align-items: center; justify-content: center;
+}
+.car-img-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.car-img-placeholder {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; padding: 20px;
+  background: linear-gradient(135deg, var(--azul), #d0eeff);
+  border-radius: 16px;
+  min-height: 280px;
+}
+.car-img-placeholder span { font-size: 48px; }
+.car-img-placeholder p { font-size: 12px; font-weight: 700; color: var(--cinza); }
+.carousel-controls {
+  display: flex; justify-content: center;
+  align-items: center; gap: 16px;
+  margin-top: 16px;
+}
+.car-btn {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--acento);
+  color: #3a2800; border: none;
+  font-size: 18px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.car-btn:hover { background: #e6c000; }
+.car-dots { display: flex; gap: 7px; }
+.car-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.car-dot.active { background: var(--acento); transform: scale(1.3); }
+
+.materiais-note {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cinza);
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 20px 28px;
+  background: var(--pessego);
+  border-radius: 16px;
+  border-left: 4px solid var(--acento);
+}
+
+/* ════════════════════════════════════
+   BLOCO 3 - MECANISMO / BENEFÍCIOS
+════════════════════════════════════ */
+.beneficios {
+  background: var(--escuro);
+  padding: 68px 20px;
+  color: white;
+}
+.beneficios .sec-title { color: white; }
+.beneficios .sec-sub { color: rgba(255,255,255,0.6); }
+.beneficios .divider-pill { background: var(--acento); }
+
+.mecanismo-text {
+  max-width: 660px;
+  margin: 0 auto 40px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.82);
+  font-weight: 400;
+}
+.mecanismo-text strong { color: var(--acento); }
+
+.ben-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  max-width: 780px;
+  margin: 0 auto 40px;
+}
+.ben-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  padding: 22px 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: background 0.2s;
+}
+.ben-card:hover { background: rgba(255,255,255,0.1); }
+.ben-ico {
+  width: 46px; height: 46px;
+  border-radius: 14px;
+  background: var(--destaque);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.ben-card h4 { font-size: 14px; font-weight: 800; margin-bottom: 4px; color: white; }
+.ben-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; font-weight: 400; }
+
+.beneficios .btn-cta-wrap { text-align: center; margin-top: 8px; }
+
+/* ════════════════════════════════════
+   BLOCO 4 - IDEAL PRA VOCÊ
+════════════════════════════════════ */
+.ideal {
+  background: var(--pessego);
+  padding: 68px 20px;
+  border-top: 4px solid var(--acento);
+  border-bottom: 4px solid var(--acento);
+}
+.ideal-list {
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.ideal-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  border-radius: 16px;
+  padding: 16px 22px;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.15s;
+}
+.ideal-item:hover { transform: translateX(4px); }
+.ideal-item .i-ico {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: var(--azul);
+  border: 1.5px solid rgba(96,191,255,0.35);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--destaque);
+}
+.ideal-item .i-ico svg { width: 20px; height: 20px; stroke: var(--destaque); }
+.ideal-footer {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #5a3e00;
+  background: var(--acento);
+  border-radius: 100px;
+  padding: 12px 28px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ════════════════════════════════════
+   BLOCO 5 - DEPOIMENTOS
+════════════════════════════════════ */
+.depoimentos {
+  background: var(--azul);
+  padding: 68px 20px;
+}
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.testi-card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  border-top: 4px solid var(--primaria);
+}
+.fb-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.fb-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  color: white;
+  flex-shrink: 0;
+}
+.fb-name { font-size: 14px; font-weight: 800; color: var(--texto); }
+.fb-time { font-size: 11px; color: var(--cinza); }
+.fb-verified { font-size: 11px; color: var(--primaria); font-weight: 700; }
+.stars { color: var(--acento); font-size: 16px; margin-bottom: 8px; }
+.testi-card p { font-size: 14px; color: #374151; line-height: 1.65; }
+.fb-like {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--borda);
+  font-size: 12px;
+  color: var(--cinza);
+  display: flex; gap: 14px;
+  font-weight: 600;
+}
+.fb-like span { cursor: pointer; }
+.fb-like span:hover { color: var(--primaria); }
+
+/* ════════════════════════════════════
+   BLOCO 6 - TUDO QUE VOCÊ RECEBE
+════════════════════════════════════ */
+.conteudo {
+  background: var(--escuro);
+  padding: 68px 20px;
+}
+.inside-card {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--escuro);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+.inside-tag {
+  background: var(--destaque);
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 24px;
+  display: inline-block;
+  border-radius: 0 0 12px 0;
+}
+.inside-body {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 0;
+}
+.inside-mockup {
+  padding: 28px 24px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 16px;
+  background: rgba(255,255,255,0.04);
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.inside-mockup-icon { font-size: 64px; }
+.inside-mockup h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--acento);
+  text-align: center;
+}
+.inside-mockup p { font-size: 13px; color: rgba(255,255,255,0.5); text-align: center; line-height: 1.5; }
+.inside-content { background: white; padding: 28px; border-radius: 0 0 24px 0; }
+.inside-content h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--texto);
+  margin-bottom: 4px;
+}
+.inside-content .sub {
+  font-size: 12px; color: var(--destaque);
+  font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 18px;
+}
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.checklist li {
+  display: flex; gap: 10px;
+  align-items: flex-start;
+  font-size: 13px; font-weight: 400;
+  color: #374151; line-height: 1.45;
+}
+.checklist li::before { content: '✅'; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+
+/* Como funciona */
+.como-funciona {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 700px;
+  margin: 48px auto 0;
+}
+.cf-step {
+  text-align: center;
+  padding: 24px 16px;
+  background: var(--azul);
+  border-radius: 18px;
+  border-top: 4px solid var(--primaria);
+}
+.cf-icon { font-size: 40px; margin-bottom: 10px; }
+.cf-step h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800; font-size: 15px;
+  color: var(--texto); margin-bottom: 6px;
+}
+.cf-step p { font-size: 13px; color: var(--cinza); font-weight: 400; line-height: 1.4; }
+
+/* ════════════════════════════════════
+   BLOCO 7 - BÔNUS
+════════════════════════════════════ */
+.bonus {
+  background: var(--escuro);
+  padding: 8px 20px 68px;
+  color: white;
+}
+.bonus .sec-title { color: white; }
+.bonus .divider-pill { background: var(--acento); }
+.bonus .sec-sub { color: rgba(255,255,255,0.6); }
+
+.bonus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  max-width: 780px;
+  margin: 0 auto 32px;
+}
+.bonus-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 24px 20px;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  gap: 12px;
+  transition: background 0.2s;
+}
+.bonus-card:hover { background: rgba(255,255,255,0.13); }
+.bonus-num {
+  background: var(--acento);
+  color: #5B4000;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  padding: 4px 16px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.bonus-ico { font-size: 40px; }
+.bonus-card h4 { font-size: 14px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.3; }
+.bonus-card p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+.bonus-free { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 20px; color: var(--acento); }
+.bonus-val { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: line-through; }
+
+/* Super bônus */
+.super-bonus {
+  max-width: 680px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, var(--acento) 0%, #ffb800 100%);
+  border-radius: 24px;
+  padding: 32px 28px;
+  text-align: center;
+  color: #3a2800;
+}
+.super-bonus .sb-tag {
+  display: inline-block;
+  background: rgba(0,0,0,0.15);
+  color: #3a2800;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 16px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+}
+.super-bonus h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(18px, 3.5vw, 26px);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+.super-bonus p { font-size: 14px; font-weight: 700; line-height: 1.6; color: rgba(0,0,0,0.7); }
+.super-bonus .sb-icon { font-size: 52px; margin-bottom: 12px; }
+
+/* ════════════════════════════════════
+   BLOCO 8 - OFERTA
+════════════════════════════════════ */
+.oferta {
+  background: #F3F4F6;
+  padding: 68px 20px;
+  color: var(--texto);
+  scroll-margin-top: 0px;
+}
+.oferta .sec-title { color: white; }
+.oferta .divider-pill { background: var(--acento); }
+
+.planos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+  align-items: start;
+}
+@media (max-width: 580px) { .planos-grid { grid-template-columns: 1fr; } }
+
+.plano-card {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 2px solid #E5E7EB;
+  background: white;
+}
+.plano-card.destaque {
+  border: 3px solid var(--azul);
+  box-shadow: 0 0 0 4px rgba(255,217,61,0.4), 0 8px 32px rgba(0,0,0,0.1);
+  background: white;
+}
+.plano-header {
+  padding: 10px 24px;
+  border-bottom: 1px solid #F3F4F6;
+  text-align: center;
+}
+.plano-header.basic-header { background: #E5E7EB; }
+.plano-header.complete-header { background: var(--acento); }
+.plano-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 12px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+.plano-tag.basic { background: rgba(0,0,0,0.1); color: #4B5563; }
+.plano-tag.complete { background: rgba(0,0,0,0.12); color: #5B4000; }
+.plano-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800; font-size: 22px;
+  margin-bottom: 6px;
+}
+.plano-title.basic-title { color: var(--texto); }
+.plano-title.complete-title { color: #3a2800; }
+.plano-mockup-area {
+  background: white;
+  padding: 20px;
+  text-align: center;
+}
+.plano-body { padding: 20px 24px; }
+.plano-checklist { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 22px; }
+.plano-checklist li {
+  display: flex; gap: 8px;
+  align-items: flex-start;
+  font-size: 13px; font-weight: 700;
+  color: var(--texto); line-height: 1.4;
+}
+.plano-checklist li::before { content: '✔'; font-size: 13px; flex-shrink: 0; margin-top: 1px; color: var(--cta); }
+.plano-price { text-align: center; margin-bottom: 18px; }
+.plano-old { font-size: 16px; color: var(--cinza); margin-bottom: 2px; }
+.plano-new {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800; font-size: 48px;
+  color: var(--cta); line-height: 1;
+}
+.plano-new sup { font-size: 20px; vertical-align: top; margin-top: 8px; }
+.plano-new sub { font-size: 20px; }
+.plano-parcelas { font-size: 13px; color: var(--cinza); font-weight: 600; margin-top: 4px; }
+.plano-economia {
+  display: inline-block;
+  background: var(--cta);
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+.btn-plano {
+  display: block;
+  text-align: center;
+  padding: 14px 20px;
+  border-radius: 100px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer; border: none;
+}
+.btn-plano:hover { transform: translateY(-2px); }
+.btn-plano.basic-btn { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
+.btn-plano.complete-btn { background: var(--cta); color: white; box-shadow: 0 6px 20px rgba(42,157,92,0.4); animation: bounce-btn 2.2s infinite; }
+
+.seta-indicadora {
+  text-align: center;
+  margin: 6px 0;
+  font-size: 22px;
+  color: var(--acento);
+  animation: bounce-arrow 1.2s ease-in-out infinite;
+}
+@keyframes bounce-arrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+.atencao-txt {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* ════════════════════════════════════
+   BLOCO 9 - GARANTIA
+════════════════════════════════════ */
+.garantia {
+  background: var(--escuro);
+  padding: 68px 20px;
+  border-top: 4px solid var(--acento);
+  border-bottom: 4px solid var(--acento);
+}
+.garantia-box {
+  max-width: 620px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.07);
+  border-radius: 24px;
+  padding: 40px 32px;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 32px;
+  align-items: center;
+}
+@media (max-width: 560px) {
+  .garantia-box { grid-template-columns: 1fr; text-align: center; }
+  .garantia-seal { margin: 0 auto !important; }
+}
+.garantia-seal {
+  width: 130px; height: 130px;
+  background: var(--cta);
+  border-radius: 50%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  color: white; border: 5px solid #1f7a47;
+  box-shadow: 0 0 0 4px rgba(42,157,92,0.15);
+}
+.seal-days { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 42px; line-height: 1; }
+.seal-txt { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+.garantia-text h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800; font-size: 22px;
+  color: var(--acento); margin-bottom: 10px;
+}
+.garantia-text p { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 8px; }
+.garantia-text strong { color: white; }
+
+/* ════════════════════════════════════
+   BLOCO 10 - FAQ
+════════════════════════════════════ */
+.faq { background: white; padding: 68px 20px; }
+.faq-list { max-width: 660px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.faq-item { border: 2px solid var(--borda); border-radius: 16px; overflow: hidden; }
+.faq-q {
+  padding: 18px 22px;
+  font-weight: 800; font-size: 15px;
+  cursor: pointer; display: flex;
+  justify-content: space-between; align-items: center;
+  background: #F9FAFB; color: var(--texto);
+  border: none; width: 100%; text-align: left;
+  transition: background 0.2s; gap: 12px;
+}
+.faq-q:hover { background: #F3F4F6; }
+.faq-arrow { font-size: 18px; color: var(--destaque); transition: transform 0.3s; flex-shrink: 0; }
+.faq-a {
+  padding: 0 22px;
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.3s;
+  font-size: 14px; color: #4B5563; line-height: 1.75;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 16px 22px; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-item.open { border-color: var(--primaria); }
+
+/* ════════════════════════════════════
+   FOOTER
+════════════════════════════════════ */
+footer {
+  background: var(--escuro);
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 36px 20px;
+  font-size: 12px;
+  line-height: 2;
+}
+footer strong { color: rgba(255,255,255,0.7); }
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 8px; }
+footer a:hover { color: white; }
+.footer-disclaimer {
+  max-width: 600px;
+  margin: 12px auto 0;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.7;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 640px) {
+  .inside-body { grid-template-columns: 1fr; }
+  .inside-mockup { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .inside-content { border-radius: 0 0 24px 24px; }
+  .como-funciona { grid-template-columns: 1fr; }
+  /* bônus 1 por linha no mobile */
+  .bonus-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+  .bonus-grid img { max-width: 200px !important; }
+  .planos-grid { max-width: 100%; grid-template-columns: 1fr; }
+  .oferta div[style*="grid-template-columns:1fr 1.1fr"] { grid-template-columns: 1fr !important; }
+  .hero-cards { grid-template-columns: 1fr; padding: 0 16px; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .hero { padding: 32px 0 40px; }
+  .hero h1 { padding: 0 16px; }
+  .hero-sub { padding: 0 16px; }
+  .hero img { width: 100% !important; max-width: 100% !important; border-radius: 0 !important; }
+
+  /* cards bloco 3B e ideal - 1 por linha no mobile */
+  .hero + section div[style*="grid-template-columns:repeat(2,1fr)"],
+  section div[style*="grid-template-columns:repeat(2,1fr)"] { grid-template-columns: 1fr !important; }
+
+  /* preço hero maior no mobile */
+  .hero-preco-valor { font-size: 58px !important; }
+
+  /* item01 - mockup em cima, descrição abaixo */
+  .inside-body { grid-template-columns: 1fr; }
+  .inside-body > div:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .inside-body img { width: 100% !important; max-width: 100% !important; border-radius: 0 !important; }
+
+  /* planos */
+  .plano-mockup-area img { width: 100% !important; max-width: 100% !important; border-radius: 0 !important; }
+
+  /* garantia */
+  .garantia-box { grid-template-columns: 1fr; text-align: center; }
+  .garantia-box img { margin: 0 auto; display: block; }
+
+  /* títulos dos planos maiores */
+  .plano-title { font-size: 22px !important; }
+}
+</style>
+
+<script>
+  window.pixelId = "6a0e157987bcf5f3f126fe1d";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+</head>
+<body>
+
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="container">
+    <h1 class="display">
+      <em>500 QUESTÕES</em> DE Seguridade Social e Direito Previdenciário PARA O CONCURSO DO INSS
+    </h1>
+
+    <!-- Mockup -->
+    <img src="images/hero.webp" alt="Kit Joguinhos das Sílabas" fetchpriority="high" decoding="async" width="560" height="420" style="max-width:100%; width:560px; height:auto; display:block; margin:0 auto 28px; border-radius:16px;">
+
+    <p class="hero-sub">
+      Questões selecionadas para o cargo de Técnico do Seguro Social, com gabarito completo e comentadas pra chegar mais preparado e conquistar sua vaga!
+    </p>
+
+    <div style="text-align:center; margin-bottom:28px;">
+      <p style="font-size:13px; font-weight:500; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">Por apenas</p>
+      <p class="hero-preco-valor" style="display:inline-block; font-family:'Poppins',sans-serif; font-weight:800; font-size:clamp(42px,8vw,64px); color:#1DB954; line-height:1; position:relative;">
+        R$ 17,90
+        <span style="position:absolute; bottom:-4px; left:0; width:100%; height:6px; background:var(--acento); border-radius:3px; opacity:1; transform:rotate(-1deg);"></span>
+      </p>
+    </div>
+
+    <div style="text-align:center; margin-bottom:8px;">
+      <a href="#oferta" class="btn-cta">ADQUIRIR AGORA</a>
+    </div>
+
+    <!-- Cards informativos -->
+  </div>
+</section>
+
+<style>
+@media (max-width: 600px) {
+  #baSlider { border-radius: 12px !important; box-shadow: none !important; width: 90% !important; margin: 0 auto !important; }
+  #baSlider ~ p { padding: 0 20px; }
+  .ba-section { padding-left: 0 !important; padding-right: 0 !important; }
+  .ba-section .container { padding: 0 !important; }
+}
+</style>
+
+<!-- ════ BLOCO BEFORE/AFTER ════ -->
+<section class="ba-section" style="background:#f8f8f8; padding:68px 20px; border-top:4px solid var(--acento);">
+  <div class="container" style="max-width:800px; margin:0 auto; padding:0 20px;">
+    <h2 class="sec-title display" style="font-size:clamp(26px,5vw,42px);">VEJA UM EXEMPLO</h2>
+
+    <div id="baSlider" style="position:relative; max-width:680px; width:100%; margin:0 auto; border-radius:20px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.18); cursor:col-resize; user-select:none; touch-action:none;">
+
+      <!-- Imagem DEPOIS (fundo, visível inteira) -->
+      <img id="baAfter" src="images/slide-2.webp" alt="Depois" style="display:block; width:100%; height:auto; pointer-events:none;">
+
+      <!-- Imagem ANTES (recortada à esquerda) -->
+      <div id="baBeforeWrap" style="position:absolute; top:0; left:0; width:50%; height:100%; overflow:hidden;">
+        <img id="baBefore" src="images/slide-1.webp" alt="Antes" style="display:block; width:100%; height:100%; object-fit:cover; object-position:left top; pointer-events:none;">
+      </div>
+
+      <!-- Linha divisória -->
+      <div id="baLine" style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:3px; height:100%; background:white; box-shadow:0 0 8px rgba(0,0,0,0.4); pointer-events:none;"></div>
+
+      <!-- Handle (alça) -->
+      <div id="baHandle" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:44px; height:44px; background:white; border-radius:50%; box-shadow:0 2px 12px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; pointer-events:none; z-index:10;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 5L2 10L7 15" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13 5L18 10L13 15" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+
+
+    </div>
+
+    <p style="text-align:center; font-size:13px; font-weight:600; color:var(--cinza); margin-top:16px;">← Arraste para ver a questão e o gabarito →</p>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  const slider = document.getElementById('baSlider');
+  const beforeWrap = document.getElementById('baBeforeWrap');
+  const line = document.getElementById('baLine');
+  const handle = document.getElementById('baHandle');
+  let dragging = false;
+
+  function setPos(x) {
+    const rect = slider.getBoundingClientRect();
+    let pct = (x - rect.left) / rect.width;
+    pct = Math.max(0.02, Math.min(0.98, pct));
+    const pctStr = (pct * 100) + '%';
+    beforeWrap.style.width = pctStr;
+    line.style.left = pctStr;
+    handle.style.left = pctStr;
+  }
+
+  slider.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
+  window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+  window.addEventListener('mouseup', () => { dragging = false; });
+
+  slider.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', () => { dragging = false; });
+})();
+</script>
+
+<!-- ════ BLOCO 4 - IDEAL PRA VOCÊ ════ -->
+<section class="ideal">
+  <div class="container">
+    <h2 class="sec-title display">Esse material é ideal pra <em>você</em> que deseja...</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:760px; margin:0 auto;">
+
+      <div style="background:white; border-radius:20px; padding:32px 26px; box-shadow:0 6px 24px rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:16px; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; width:5px; height:100%; background:var(--destaque); border-radius:20px 0 0 20px;"></div>
+        <div style="width:52px;height:52px;background:#EDE9FE;border-radius:16px;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <p style="font-size:16px; font-weight:700; color:var(--texto); line-height:1.45;">Estimular a criatividade, a atenção e a participação ativa</p>
+      </div>
+
+      <div style="background:white; border-radius:20px; padding:32px 26px; box-shadow:0 6px 24px rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:16px; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; width:5px; height:100%; background:var(--cta); border-radius:20px 0 0 20px;"></div>
+        <div style="width:52px;height:52px;background:#D1FAE5;border-radius:16px;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2A9D5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+        </div>
+        <p style="font-size:16px; font-weight:700; color:var(--texto); line-height:1.45;">Sair das atividades repetitivas e cansativas</p>
+      </div>
+
+      <div style="background:white; border-radius:20px; padding:32px 26px; box-shadow:0 6px 24px rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:16px; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; width:5px; height:100%; background:var(--primaria); border-radius:20px 0 0 20px;"></div>
+        <div style="width:52px;height:52px;background:#DBEAFE;border-radius:16px;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60BFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <p style="font-size:16px; font-weight:700; color:var(--texto); line-height:1.45;">Prender mais a atenção da criança durante o aprendizado</p>
+      </div>
+
+      <div style="background:var(--escuro); border-radius:20px; padding:32px 26px; box-shadow:0 6px 24px rgba(27,42,74,0.2); display:flex; flex-direction:column; gap:16px; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; width:5px; height:100%; background:var(--acento); border-radius:20px 0 0 20px;"></div>
+        <div style="width:52px;height:52px;background:rgba(255,217,61,0.15);border-radius:16px;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD93D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p style="font-size:16px; font-weight:700; color:white; line-height:1.45;">Tornar o processo de alfabetização mais leve, divertido e eficaz</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ BLOCO 6 - TUDO QUE VOCÊ RECEBE ════ -->
+<section class="conteudo">
+  <div class="container">
+    <h2 class="sec-title display" style="color:white; font-size:clamp(20px,3.5vw,32px); letter-spacing:0.04em; margin-bottom:32px;">TUDO QUE VOCÊ VAI RECEBER AO ADQUIRIR <span style="color:var(--acento);">HOJE</span></h2>
+
+    <!-- ITEM 01 -->
+    <div style="max-width:760px; margin:0 auto 24px; background:var(--escuro); border-radius:24px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.15);">
+      <div class="inside-body">
+        <div style="padding:24px 20px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(255,255,255,0.04); border-right:1px solid rgba(255,255,255,0.08);">
+          <img src="images/item01.webp" loading="lazy" decoding="async" alt="Kit Joguinhos das Sílabas" style="width:100%; width:100%; height:auto; display:block; margin:0 auto; border-radius:0;">
+        </div>
+        <div style="background:white; padding:28px; border-radius:0 0 24px 0;">
+          <div style="display:inline-block; background:var(--destaque); color:white; font-size:11px; font-weight:800; padding:3px 14px; border-radius:100px; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">ITEM 01</div>
+          <h3 style="font-family:'Poppins',cursive; font-weight:800; font-size:20px; color:var(--texto); margin-bottom:12px; line-height:1.2;">Kit Joguinhos das Sílabas</h3>
+          <div style="border-top:1px solid #F3F4F6; margin-bottom:12px;"></div>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0;">
+            <li style="display:flex; gap:10px; align-items:flex-start; font-size:13px; font-weight:700; color:var(--cta); line-height:1.4; padding:9px 0; border-bottom:1px solid #F3F4F6;"><span style="color:var(--cta); flex-shrink:0; margin-top:1px;">✔</span>Encontre as Sílabas - molde da caixa, 90 fichas com sílabas e 61 cards com palavras simples e complexas</li>
+            <li style="display:flex; gap:10px; align-items:flex-start; font-size:13px; font-weight:700; color:var(--cta); line-height:1.4; padding:9px 0; border-bottom:1px solid #F3F4F6;"><span style="color:var(--cta); flex-shrink:0; margin-top:1px;">✔</span>Roleta de Sílabas - 21 roletas das Famílias Silábicas Simples de fonética</li>
+            <li style="display:flex; gap:10px; align-items:flex-start; font-size:13px; font-weight:700; color:var(--cta); line-height:1.4; padding:9px 0; border-bottom:1px solid #F3F4F6;"><span style="color:var(--cta); flex-shrink:0; margin-top:1px;">✔</span>Descobrindo Palavrinhas - capa do livreto, 38 cartões com figuras e 76 cartões com sílabas</li>
+            <li style="display:flex; gap:10px; align-items:flex-start; font-size:13px; font-weight:700; color:var(--cta); line-height:1.4; padding:9px 0; border-bottom:1px solid #F3F4F6;"><span style="color:var(--cta); flex-shrink:0; margin-top:1px;">✔</span>Complete as Sílabas Complexas - 99 cartões para completar palavras</li>
+            <li style="display:flex; gap:10px; align-items:flex-start; font-size:13px; font-weight:700; color:var(--cta); line-height:1.4; padding:9px 0; border-bottom:1px solid #F3F4F6;"><span style="color:var(--cta); flex-shrink:0; margin-top:1px;">✔</span>Amarelinha das Sílabas - Simples e complexas.</li>
+            <li style="display:flex; gap:10px; align-items:flex-start; font-size:13px; font-weight:700; color:var(--cta); line-height:1.4; padding:9px 0; border-bottom:1px solid #F3F4F6;"><span style="color:var(--cta); flex-shrink:0; margin-top:1px;">✔</span>Mão nas Sílabas - Todas as família silábicas, simples e complexas.</li>
+            <li style="display:flex; gap:10px; align-items:flex-start; font-size:13px; font-weight:700; color:var(--cta); line-height:1.4; padding:9px 0; border-bottom:1px solid #F3F4F6;"><span style="color:var(--cta); flex-shrink:0; margin-top:1px;">✔</span>Cards Ilustrados e divertidos</li>
+            <li style="display:flex; gap:10px; align-items:flex-start; font-size:13px; font-weight:700; color:var(--cta); line-height:1.4; padding:9px 0; border-bottom:1px solid #F3F4F6;"><span style="color:var(--cta); flex-shrink:0; margin-top:1px;">✔</span>Atividades prontas pra praticar</li>
+            <li style="display:flex; justify-content:center; font-size:13px; font-weight:800; color:var(--destaque); line-height:1.4; padding-top:12px;">E MUITO MAIS...</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Como funciona -->
+    <div class="como-funciona">
+      <div class="cf-step">
+        <div class="cf-icon">📩</div>
+        <h4>CHEGA NO E-MAIL</h4>
+        <p>Após a compra você recebe no e-mail o acesso a plataforma com arquivos em formato PDF.</p>
+      </div>
+      <div class="cf-step">
+        <div class="cf-icon">🖨️</div>
+        <h4>VOCÊ IMPRIME</h4>
+        <p>Você pode imprimir quando quiser, pois o acesso é VITALÍCIO e quantas vezes desejar.</p>
+      </div>
+      <div class="cf-step">
+        <div class="cf-icon">🥳</div>
+        <h4>OS PEQUENOS AMAM</h4>
+        <p>Agora é só começar a diversão com as crianças, e elas vão amar!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ BLOCO 7 - BÔNUS ════ -->
+<section class="bonus">
+  <div class="container">
+    <p style="text-align:center; color:white; font-size:clamp(18px,2.8vw,24px); font-family:'Poppins',cursive; font-weight:700; margin-bottom:2px;">E não para por aí…</p>
+    <p style="text-align:center; color:white; font-size:clamp(18px,2.8vw,24px); font-family:'Poppins',cursive; font-weight:700; margin-bottom:16px;">Você também vai receber</p>
+    <h2 class="sec-title display" style="color:var(--acento); font-size:clamp(28px,5vw,48px);">6 BÔNUS EXCLUSIVOS</h2>
+
+    <div class="bonus-grid">
+
+      <div style="background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+        <div style="background:var(--destaque); color:var(--acento); font-family:'Poppins',cursive; font-weight:900; font-size:15px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; text-align:center;">#1 - BÔNUS HOJE!</div>
+        <div style="padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:white; min-height:90px;">
+          <img src="images/bonus-1.webp" loading="lazy" decoding="async" alt="Bônus 1" style="max-width:140px; width:100%; height:auto; display:block; margin:0 auto;">
+        </div>
+        <div style="padding:14px 16px; text-align:center;">
+          <h4 style="font-family:'Poppins',cursive; font-weight:800; font-size:15px; color:var(--texto); margin-bottom:8px;">Sílabas Mágicas</h4>
+          <div style="border-top:1px solid #F3F4F6; margin-bottom:8px;"></div>
+          <p style="font-size:12px; color:var(--cinza); line-height:1.5;">60 atividades para praticar o aprendizado: formação de sílabas, ligar sílaba com figura e muito mais</p>
+          <p style="margin-top:8px; font-size:13px;"><span style="text-decoration:line-through; color:#EF4444; font-weight:700;">R$37,00</span> <strong style="color:var(--cta);">GRÁTIS</strong></p>
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+        <div style="background:var(--destaque); color:var(--acento); font-family:'Poppins',cursive; font-weight:900; font-size:15px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; text-align:center;">#2 - BÔNUS HOJE!</div>
+        <div style="padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:white; min-height:90px;">
+          <img src="images/bonus-2.webp" loading="lazy" decoding="async" alt="Bônus 2" style="max-width:140px; width:100%; height:auto; display:block; margin:0 auto;">
+        </div>
+        <div style="padding:14px 16px; text-align:center;">
+          <h4 style="font-family:'Poppins',cursive; font-weight:800; font-size:15px; color:var(--texto); margin-bottom:8px;">Pinte e Aprenda</h4>
+          <div style="border-top:1px solid #F3F4F6; margin-bottom:8px;"></div>
+          <p style="font-size:12px; color:var(--cinza); line-height:1.5;">50 atividades de associação - a criança identifica e pinta a letra que está faltando para completar a palavra</p>
+          <p style="margin-top:8px; font-size:13px;"><span style="text-decoration:line-through; color:#EF4444; font-weight:700;">R$27,00</span> <strong style="color:var(--cta);">GRÁTIS</strong></p>
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+        <div style="background:var(--destaque); color:var(--acento); font-family:'Poppins',cursive; font-weight:900; font-size:15px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; text-align:center;">#3 - BÔNUS HOJE!</div>
+        <div style="padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:white; min-height:90px;">
+          <img src="images/bonus-3.webp" loading="lazy" decoding="async" alt="Bônus 3" style="max-width:140px; width:100%; height:auto; display:block; margin:0 auto;">
+        </div>
+        <div style="padding:14px 16px; text-align:center;">
+          <h4 style="font-family:'Poppins',cursive; font-weight:800; font-size:15px; color:var(--texto); margin-bottom:8px;">Palavras em Construção</h4>
+          <div style="border-top:1px solid #F3F4F6; margin-bottom:8px;"></div>
+          <p style="font-size:12px; color:var(--cinza); line-height:1.5;">20 exercícios de formação de palavras que incentivam leitura e escrita, ajudando a construir vocabulário</p>
+          <p style="margin-top:8px; font-size:13px;"><span style="text-decoration:line-through; color:#EF4444; font-weight:700;">R$27,00</span> <strong style="color:var(--cta);">GRÁTIS</strong></p>
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+        <div style="background:var(--destaque); color:var(--acento); font-family:'Poppins',cursive; font-weight:900; font-size:15px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; text-align:center;">#4 - BÔNUS HOJE!</div>
+        <div style="padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:white; min-height:90px;">
+          <img src="images/bonus-4.webp" loading="lazy" decoding="async" alt="Bônus 4" style="max-width:140px; width:100%; height:auto; display:block; margin:0 auto;">
+        </div>
+        <div style="padding:14px 16px; text-align:center;">
+          <h4 style="font-family:'Poppins',cursive; font-weight:800; font-size:15px; color:var(--texto); margin-bottom:8px;">Traço-Mágico</h4>
+          <div style="border-top:1px solid #F3F4F6; margin-bottom:8px;"></div>
+          <p style="font-size:12px; color:var(--cinza); line-height:1.5;">Todas as letras do alfabeto traçadas, para as crianças praticarem a escrita e melhorarem coordenação motora</p>
+          <p style="margin-top:8px; font-size:13px;"><span style="text-decoration:line-through; color:#EF4444; font-weight:700;">R$27,00</span> <strong style="color:var(--cta);">GRÁTIS</strong></p>
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+        <div style="background:var(--destaque); color:var(--acento); font-family:'Poppins',cursive; font-weight:900; font-size:15px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; text-align:center;">#5 - BÔNUS HOJE!</div>
+        <div style="padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:white; min-height:90px;">
+          <img src="images/bonus-5.webp" loading="lazy" decoding="async" alt="Bônus 5" style="max-width:140px; width:100%; height:auto; display:block; margin:0 auto;">
+        </div>
+        <div style="padding:14px 16px; text-align:center;">
+          <h4 style="font-family:'Poppins',cursive; font-weight:800; font-size:15px; color:var(--texto); margin-bottom:8px;">Pinta Letras</h4>
+          <div style="border-top:1px solid #F3F4F6; margin-bottom:8px;"></div>
+          <p style="font-size:12px; color:var(--cinza); line-height:1.5;">24 atividades para praticar a atenção - a criança pinta todas as letras das iniciais de acordo com a figura</p>
+          <p style="margin-top:8px; font-size:13px;"><span style="text-decoration:line-through; color:#EF4444; font-weight:700;">R$19,00</span> <strong style="color:var(--cta);">GRÁTIS</strong></p>
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+        <div style="background:var(--destaque); color:var(--acento); font-family:'Poppins',cursive; font-weight:900; font-size:15px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; text-align:center;">#6 - BÔNUS HOJE!</div>
+        <div style="padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:white; min-height:90px;">
+          <img src="images/bonus-6.webp" loading="lazy" decoding="async" alt="Bônus 6" style="max-width:140px; width:100%; height:auto; display:block; margin:0 auto;">
+        </div>
+        <div style="padding:14px 16px; text-align:center;">
+          <h4 style="font-family:'Poppins',cursive; font-weight:800; font-size:15px; color:var(--texto); margin-bottom:8px;">ABC com Imagens</h4>
+          <div style="border-top:1px solid #F3F4F6; margin-bottom:8px;"></div>
+          <p style="font-size:12px; color:var(--cinza); line-height:1.5;">Atividades para as crianças ligarem as letras nas imagens correspondentes, de forma lúdica e visual</p>
+          <p style="margin-top:8px; font-size:13px;"><span style="text-decoration:line-through; color:#EF4444; font-weight:700;">R$19,00</span> <strong style="color:var(--cta);">GRÁTIS</strong></p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Super bônus -->
+    <div style="max-width:680px; margin:32px auto 0; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+      <div style="background:var(--acento); padding:10px 16px; text-align:center;">
+        <span style="font-family:'Poppins',cursive; font-weight:900; font-size:17px; color:#3a2800; letter-spacing:0.08em; text-transform:uppercase;">⚡ SUPER BÔNUS</span>
+      </div>
+      <div style="padding:20px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:white; min-height:90px;">
+        <img src="images/super-bonus.webp" loading="lazy" decoding="async" alt="Super Bônus" style="max-width:300px; width:100%; height:auto; display:block; margin:0 auto;">
+      </div>
+      <div style="padding:20px 24px; text-align:center;">
+        <h3 style="font-family:'Poppins',cursive; font-weight:800; font-size:18px; color:var(--texto); margin-bottom:8px;">Kit de Grafismo Fonético - Nível 1, 2 e 3</h3>
+        <div style="border-top:1px solid #F3F4F6; margin-bottom:10px;"></div>
+        <p style="font-size:13px; color:var(--cinza); line-height:1.6;">O famoso <strong style="color:var(--texto);">método americano de alfabetização</strong> que acelera o aprendizado da leitura avançada, com mais de 100 atividades com palavras de 2 até 4 sílabas. <strong style="color:var(--texto);">Inclui vídeo tutorial</strong> de como aplicar com os pequenos.</p>
+        <p style="margin-top:10px; font-size:14px;"><span style="text-decoration:line-through; color:#EF4444; font-weight:700;">R$47,00</span> <strong style="color:var(--cta); font-size:15px;">GRÁTIS</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ BLOCO 8 - OFERTA ════ -->
+<section class="oferta" id="oferta">
+  <div class="container">
+    <p style="text-align:center; font-size:clamp(20px,3.5vw,32px); font-weight:800; color:var(--texto); margin-bottom:8px;">
+      DESCONTO EXCLUSIVO DE <strong style="color:#DC2626;">90%</strong> SOMENTE HOJE!
+    </p>
+    <div style="text-align:center; margin-bottom:28px;">
+      <div style="display:inline-flex; align-items:center; gap:8px; background:var(--escuro); border-radius:12px; padding:10px 24px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span style="font-family:'Poppins',sans-serif; font-weight:800; font-size:22px; color:var(--acento); letter-spacing:0.08em;" id="oferta-countdown">23:59:59</span>
+      </div>
+    </div>
+    <script>
+      (function(){
+        const key = 'cd_oferta_exclusiva';
+        let end = parseInt(localStorage.getItem(key) || '0');
+        if (!end || end < Date.now()) {
+          end = Date.now() + 23*3600000 + 59*60000 + 59*1000;
+          localStorage.setItem(key, end);
+        }
+        function tick() {
+          const diff = Math.max(0, end - Date.now());
+          const h = String(Math.floor(diff/3600000)).padStart(2,'0');
+          const m = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+          const s = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+          const el = document.getElementById('oferta-countdown');
+          if (el) el.textContent = h+':'+m+':'+s;
+          if (diff > 0) setTimeout(tick, 1000);
+        }
+        tick();
+      })();
+    </script>
+    <div style="text-align:center; margin-bottom:32px;">
+      <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4L14 14L24 4" stroke="var(--destaque)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4 16L14 26L24 16" stroke="var(--destaque)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <div style="max-width:760px; margin:0 auto; display:grid; grid-template-columns:1fr 1.1fr; gap:20px; align-items:start;">
+
+      <!-- Plano Básico -->
+      <div class="plano-card">
+        <div class="plano-header basic-header">
+          <div class="plano-title basic-title">Plano Básico</div>
+        </div>
+        <div class="plano-mockup-area" style="background:white;">
+          <img src="images/plano-basico.webp" loading="lazy" decoding="async" alt="Plano Básico" width="260" height="260" style="max-width:260px; width:100%; height:auto; display:block; margin:0 auto;">
+        </div>
+        <div style="border-top:1px solid #F3F4F6;"></div>
+        <div class="plano-body">
+          <ul class="plano-checklist">
+            <li>Kit Joguinhos das Sílabas (em PDF)</li>
+          </ul>
+          <div style="border-top:1px solid #F3F4F6; margin-bottom:16px;"></div>
+          <div class="plano-price">
+            <div class="plano-new">R$17,90</div>
+            <div class="plano-parcelas">ou 2x de R$9,42</div>
+          </div>
+          <a href="https://pay.hotmart.com/Y105924383R?off=ayo8pnrq&checkoutMode=10" class="btn-plano basic-btn" style="background:var(--cta); color:white; box-shadow:0 6px 20px rgba(42,157,92,0.3);">Quero somente o básico</a>
+          <div style="margin-top:14px; text-align:center; font-size:13px; font-weight:800; color:#DC2626;">Temos uma oferta ainda mais VANTAJOSA pra você! Veja ao lado</div>
+        </div>
+      </div>
+
+      <!-- Plano Completo -->
+      <div class="plano-card destaque">
+        <div class="plano-header" style="background:var(--escuro); text-align:center; padding:14px 24px;">
+          <div class="plano-title" style="color:var(--acento); font-size:18px;">KIT ALFABETIZAÇÃO DIVERTIDA</div>
+        </div>
+        <div class="plano-mockup-area" style="background:white;">
+          <img src="images/plano-completo.webp" loading="lazy" decoding="async" alt="Plano Completo" width="380" height="380" style="max-width:380px; width:100%; height:auto; display:block; margin:0 auto;">
+        </div>
+        <p style="text-align:center; font-size:13px; font-weight:800; color:var(--texto); padding:10px 20px 0;">Todos os materiais na versão PDF (receba imediato)</p>
+        <div style="border-top:1px solid #F3F4F6;"></div>
+        <div class="plano-body">
+          <ul class="plano-checklist" style="gap:0;">
+            <li style="border-bottom:1px solid #F3F4F6; padding-bottom:9px;">Kit Joguinhos das Sílabas - Encontre as Sílabas, Roleta de Sílabas Simples, Descobrindo Palavrinhas, Complete as Sílabas Complexas, Amarelinha das Sílabas (Simples e Complexas), Mão nas Sílabas (Simples e Complexas)</li>
+            <li style="border-bottom:1px solid #F3F4F6; padding:9px 0;">SÍLABAS MÁGICAS - 60 atividades para praticar o aprendizado das sílabas</li>
+            <li style="border-bottom:1px solid #F3F4F6; padding:9px 0;">PINTE E APRENDA - 50 atividades de associação das sílabas</li>
+            <li style="border-bottom:1px solid #F3F4F6; padding:9px 0;">PALAVRAS EM CONSTRUÇÃO - 20 exercícios de formação de palavras</li>
+            <li style="border-bottom:1px solid #F3F4F6; padding:9px 0;">TRAÇO-MÁGICO - Todas as letras do alfabeto traçadas para completar</li>
+            <li style="border-bottom:1px solid #F3F4F6; padding:9px 0;">PINTA LETRAS - 24 atividades para praticar a atenção e associação das letras</li>
+            <li style="border-bottom:1px solid #F3F4F6; padding:9px 0;">ABC COM IMAGENS - Atividades para crianças ligar as letras nas imagens</li>
+            <li style="padding-top:9px;">SUPER BÔNUS: Kit de Grafismo Fonético (Nível 1, 2 e 3)</li>
+          </ul>
+          <div style="border-top:1px solid #F3F4F6; margin-bottom:16px;"></div>
+          <div class="plano-price">
+            <div class="plano-old">De <span style="text-decoration:line-through; color:#EF4444;">R$197,00</span> por</div>
+            <div class="plano-new">R$17,90</div>
+            <div class="plano-parcelas">ou 2x de R$10,47</div>
+          </div>
+          <div style="border-top:1px solid #F3F4F6; margin:12px 0;"></div>
+          <div style="text-align:center; margin-bottom:14px;">
+            <span class="plano-economia" style="background:var(--acento); color:#1a1a1a;">Você economiza R$177,10!</span>
+          </div>
+          <a href="https://pay.hotmart.com/V105924470G?off=yk4dlij4&checkoutMode=10" class="btn-plano complete-btn">QUERO O KIT AGORA</a>
+          <p style="text-align:center; font-size:13px; font-weight:400; color:var(--texto); margin-top:12px;"><strong>APROVEITE AGORA:</strong> você não vai encontrar esse preço depois!</p>
+          <img src="images/formas-de-pagamento.webp" loading="lazy" decoding="async" alt="Formas de pagamento" width="380" height="60" style="max-width:380px; width:100%; height:auto; display:block; margin:12px auto 0;">
+        </div>
+      </div>
+
+    </div><!-- fecha grid 2 colunas -->
+
+  </div>
+</section>
+
+<!-- ════ BLOCO 9 - GARANTIA ════ -->
+<section class="garantia">
+  <div class="container">
+    <h2 class="sec-title display" style="text-transform:uppercase; color:white;">GARANTIA DE SATISFAÇÃO TOTAL</h2>
+    <div class="garantia-box">
+      <img src="images/garantia.webp" loading="lazy" decoding="async" alt="Garantia 7 dias" width="180" height="180" style="width:180px; height:180px; object-fit:contain; flex-shrink:0;">
+      <div class="garantia-text">
+        <h3>Risco zero pra você!</h3>
+        <p>Se, por qualquer motivo, você sentir que o material não foi útil ou que a criança não se adaptou, é só nos avisar dentro desse prazo.</p>
+        <p><strong>Devolveremos 100% do seu investimento.</strong> Sem perguntas, sem burocracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ BLOCO 10 - FAQ ════ -->
+<section class="faq">
+  <div class="container">
+    <h2 class="sec-title display">Perguntas Frequentes</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>💳 Qual a forma de pagamento?</span>
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Você pode fazer o pagamento pelo Pix ou cartão de crédito. É rápido, fácil e seguro!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>🔒 O pagamento é seguro?</span>
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Sim! O pagamento é 100% seguro e será processado pela <strong>Hotmart</strong>, uma das maiores plataformas de produtos digitais do Brasil.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>♾️ O acesso é vitalício?</span>
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Sim! Você paga uma vez e o material é seu para sempre. Pode imprimir quantas vezes quiser, quando quiser.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>📩 Como vou acessar o material?</span>
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">O acesso é enviado para o seu e-mail imediatamente após a confirmação do pagamento. Lá você poderá baixar todo o conteúdo em PDF!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <strong>COPYRIGHT 2025 - SABIDINHOS KIDS & LANOV DIGITAL</strong>
+  <br>
+  <a href="privacidade.html">Políticas de Privacidade</a>
+  <a href="termos.html">Termos de Uso</a>
+  <a href="contato.html">Contato</a>
+  <div class="footer-disclaimer">
+    Este site não faz parte do Facebook, Instagram ou Meta Platforms, Inc. e não é endossado por essas plataformas. Facebook e Instagram são marcas registradas da Meta Platforms, Inc.
+  </div>
+</footer>
+
+<script>
+// ─── FAQ ───
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ─── COUNTDOWN ───
+(function() {
+  const key = 'cd_end_silabas';
+  let end = parseInt(localStorage.getItem(key) || '0');
+  if (!end || end < Date.now()) {
+    end = Date.now() + 23 * 3600000 + 59 * 60000 + 59 * 1000;
+    localStorage.setItem(key, end);
+  }
+  function update() {
+    const diff = Math.max(0, end - Date.now());
+    const h = String(Math.floor(diff / 3600000)).padStart(2, '0');
+    const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+    const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+    const el = document.getElementById('countdown');
+    if (el) el.textContent = `${h}:${m}:${s}`;
+    if (diff > 0) setTimeout(update, 1000);
+  }
+  update();
+})();
+
+
+// ─── SMOOTH SCROLL ───
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: top, behavior: 'instant' });
+    }
+  });
+});
+</script>
+</body>
+</html>
