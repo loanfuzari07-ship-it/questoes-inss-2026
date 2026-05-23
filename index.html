@@ -1037,13 +1037,21 @@ footer a:hover { color: white; }
   </div>
 </section>
 
-<!-- ════ BLOCO BEFORE/AFTER ════ -->
-<section style="background:#f8f8f8; padding:68px 20px; border-top:4px solid var(--acento);">
-  <div class="container">
-    <h2 class="sec-title display" style="font-size:clamp(26px,5vw,42px);">VEJA UM EXEMPLO</h2>
-    <div class="divider-pill"></div>
+<style>
+@media (max-width: 600px) {
+  #baSlider { border-radius: 0 !important; box-shadow: none !important; }
+  #baSlider ~ p { padding: 0 20px; }
+  .ba-section { padding-left: 0 !important; padding-right: 0 !important; }
+  .ba-section .container { padding: 0 !important; }
+}
+</style>
 
-    <div id="baSlider" style="position:relative; max-width:680px; margin:0 auto; border-radius:20px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.18); cursor:col-resize; user-select:none; touch-action:none;">
+<!-- ════ BLOCO BEFORE/AFTER ════ -->
+<section class="ba-section" style="background:#f8f8f8; padding:68px 20px; border-top:4px solid var(--acento);">
+  <div class="container" style="max-width:800px; margin:0 auto; padding:0 20px;">
+    <h2 class="sec-title display" style="font-size:clamp(26px,5vw,42px);">VEJA UM EXEMPLO</h2>
+
+    <div id="baSlider" style="position:relative; max-width:680px; width:100%; margin:0 auto; border-radius:20px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.18); cursor:col-resize; user-select:none; touch-action:none;">
 
       <!-- Imagem DEPOIS (fundo, visível inteira) -->
       <img id="baAfter" src="images/slide-2.webp" alt="Depois" style="display:block; width:100%; height:auto; pointer-events:none;">
@@ -1064,9 +1072,7 @@ footer a:hover { color: white; }
         </svg>
       </div>
 
-      <!-- Labels -->
-      <div style="position:absolute; top:14px; left:14px; background:rgba(0,0,0,0.55); color:white; font-size:12px; font-weight:800; padding:4px 12px; border-radius:100px; letter-spacing:0.06em; pointer-events:none;">QUESTÃO</div>
-      <div style="position:absolute; top:14px; right:14px; background:var(--cta); color:white; font-size:12px; font-weight:800; padding:4px 12px; border-radius:100px; letter-spacing:0.06em; pointer-events:none;">GABARITO</div>
+
 
     </div>
 
@@ -1102,37 +1108,6 @@ footer a:hover { color: white; }
   window.addEventListener('touchend', () => { dragging = false; });
 })();
 </script>
-
-<!-- ════ BLOCO 2 - MATERIAIS ════ -->
-<section class="materiais">
-  <div class="container">
-    <h2 class="sec-title display" style="color:white;">VEJA ALGUNS DOS MATERIAIS</h2>
-
-    <!-- Carousel -->
-    <div class="carousel-wrap">
-      <div class="carousel-track" id="carTrack">
-        <!-- slides gerados via JS -->
-      </div>
-    </div>
-    <div class="carousel-controls">
-      <button class="car-btn" id="carPrev">‹</button>
-      <div class="car-dots" id="carDots"></div>
-      <button class="car-btn" id="carNext">›</button>
-    </div>
-
-    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px; max-width:620px; margin:32px auto 0;">
-      <div style="background:rgba(255,255,255,0.08); border-radius:14px; padding:16px 18px; display:flex; align-items:flex-start; gap:11px; border:1.5px solid rgba(255,255,255,0.15);">
-        <div class="hc-icon" style="border-color:white; color:white;">&#10003;</div>
-        <p style="font-size:13px; font-weight:600; color:white; line-height:1.45;">Ideal para crianças a partir de 3 anos, no ritmo natural de cada uma</p>
-      </div>
-      <div style="background:rgba(255,255,255,0.08); border-radius:14px; padding:16px 18px; display:flex; align-items:flex-start; gap:11px; border:1.5px solid rgba(255,255,255,0.15);">
-        <div class="hc-icon" style="border-color:white; color:white;">&#10003;</div>
-        <p style="font-size:13px; font-weight:600; color:white; line-height:1.45;">Funciona também com crianças com TDAH, Autismo ou dificuldades de foco</p>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- ════ BLOCO 4 - IDEAL PRA VOCÊ ════ -->
 <section class="ideal">
@@ -1535,97 +1510,6 @@ function toggleFaq(btn) {
   update();
 })();
 
-// ─── CAROUSEL ───
-(function() {
-  const slides = [
-    { img: 'images/slide-1.webp', label: 'Slide 1' },
-    { img: 'images/slide-13.webp', label: 'Slide 13' },
-    { img: 'images/slide-2.webp', label: 'Slide 2' },
-    { img: 'images/slide-3.webp', label: 'Slide 3' },
-    { img: 'images/slide-14.webp', label: 'Slide 14' },
-    { img: 'images/slide-4.webp', label: 'Slide 4' },
-    { img: 'images/slide-5.webp', label: 'Slide 5' },
-    { img: 'images/slide-6.webp', label: 'Slide 6' },
-    { img: 'images/slide-15.webp', label: 'Slide 15' },
-    { img: 'images/slide-7.webp', label: 'Slide 7' },
-    { img: 'images/slide-8.webp', label: 'Slide 8' },
-    { img: 'images/slide-16.webp', label: 'Slide 16' },
-    { img: 'images/slide-9.webp', label: 'Slide 9' },
-    { img: 'images/slide-10.webp', label: 'Slide 10' },
-    { img: 'images/slide-11.webp', label: 'Slide 11' },
-    { img: 'images/slide-12.webp', label: 'Slide 12' },
-  ];
-
-  const track = document.getElementById('carTrack');
-  const dotsWrap = document.getElementById('carDots');
-  let cur = 0, total = 0, autoTimer = null;
-
-  function isMobile() { return window.innerWidth <= 600; }
-
-  function build() {
-    const perSlide = isMobile() ? 1 : 2;
-    total = Math.ceil(slides.length / perSlide);
-    cur = 0;
-    track.innerHTML = '';
-    dotsWrap.innerHTML = '';
-
-    for (let i = 0; i < total; i++) {
-      const slide = document.createElement('div');
-      slide.className = 'carousel-slide';
-      const inner = document.createElement('div');
-      inner.className = 'carousel-slide-inner';
-      inner.style.gridTemplateColumns = perSlide === 1 ? '1fr' : 'repeat(2,1fr)';
-      inner.style.display = 'grid';
-      inner.style.gap = '12px';
-      inner.style.padding = '0 8px';
-
-      slides.slice(i * perSlide, i * perSlide + perSlide).forEach(s => {
-        const card = document.createElement('div');
-        card.className = 'car-img-placeholder';
-        card.style.cssText = 'background:none;border:none;padding:0;border-radius:12px;overflow:hidden;min-height:auto;';
-        const img = document.createElement('img');
-        img.src = s.img;
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        img.alt = s.label;
-        img.style.cssText = 'width:100%;height:auto;display:block;border-radius:12px;';
-        card.appendChild(img);
-        inner.appendChild(card);
-      });
-
-      slide.appendChild(inner);
-      track.appendChild(slide);
-
-      const dot = document.createElement('div');
-      dot.className = 'car-dot' + (i === 0 ? ' active' : '');
-      dot.onclick = () => go(i);
-      dotsWrap.appendChild(dot);
-    }
-    go(0);
-  }
-
-  function go(n) {
-    cur = (n + total) % total;
-    track.style.transform = `translateX(-${cur * 100}%)`;
-    dotsWrap.querySelectorAll('.car-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
-  }
-
-  document.getElementById('carNext').onclick = () => go(cur + 1);
-  document.getElementById('carPrev').onclick = () => go(cur - 1);
-
-  function startAuto() { autoTimer = setInterval(() => go(cur + 1), 3500); }
-  function stopAuto() { clearInterval(autoTimer); }
-
-  build();
-  startAuto();
-
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    stopAuto();
-    resizeTimer = setTimeout(() => { build(); startAuto(); }, 200);
-  });
-})();
 
 // ─── SMOOTH SCROLL ───
 document.querySelectorAll('a[href^="#"]').forEach(a => {
